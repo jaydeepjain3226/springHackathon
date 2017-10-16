@@ -5,6 +5,8 @@ package com.hackathon.hack.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,6 +67,24 @@ public class UserService implements UserServiceInterface{
    
    public void updateUserProfile(UserProfile user) {
        userRepository.save(user);
+   }
+   
+   //regex for username validation
+   public boolean validateUserName(String userName) {
+       String regx = "[a-zA-Z0-9]+\\.?";
+       Pattern pattern = Pattern.compile(regx,Pattern.CASE_INSENSITIVE);
+       Matcher matcher = pattern.matcher(userName);
+       return matcher.find();
+   }
+   
+   //regex for email validation
+   public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
+           Pattern.CASE_INSENSITIVE);
+
+   //function for email validation
+   public boolean validate(String emailStr) {
+       Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+       return matcher.find();
    }
 
     

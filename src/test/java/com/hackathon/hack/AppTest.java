@@ -1,4 +1,4 @@
-package com.hackathon.java.hack;
+package com.hackathon.hack;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

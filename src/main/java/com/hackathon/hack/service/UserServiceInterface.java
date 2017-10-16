@@ -12,5 +12,7 @@ public interface UserServiceInterface {
 	public void deleteUserProfile(int id);
 	public UserProfile findById(int id);
 	public void updateUserProfile(UserProfile user);
+	public boolean validate(String emailStr);
+	public boolean validateUserName(String userName);
 
 }
